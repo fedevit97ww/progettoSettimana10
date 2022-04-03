@@ -1,0 +1,35 @@
+<div  class="container m-2 "*ngIf="prodotti.length > 0 else elseTemplate">
+  <h1>Prodotti nel carrello</h1>
+  <div *ngFor="let item of prodotti; let i = index">
+    <div class="card " style="width:400px">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.price | currency :"EUR" }} </p>
+        <button class="btn btn-danger"(click)="removeItem(i)">Rimuovi Prodotto</button>
+      </div>
+    </div>
+  </div>
+  <button style="width:400px" class="btn btn-primary mt-2"(click)="svuotaCart()">Svuota Carrello </button>
+  <h1>Checkout</h1>
+
+<div class="form-group">
+
+      <form [formGroup]="checkout" (ngSubmit)="onSubmit()">
+        <label for="nome">Nome: </label>
+        <input class="form-control" style="width:400px" id="nome" type="text" formControlName="nome">
+
+        <label for="indirizzo">Indirizzo: </label>
+        <input class="form-control " style="width:400px" id="indirizzo" type="text" formControlName="indirizzo">
+
+        <button class="btn btn-primary mt-2" style="width:400px" type="submit">Checkout</button>
+
+      </form>
+</div>
+</div>
+
+<div >
+  <ng-template   #elseTemplate>
+    <p>Il Carrello è vuoto</p>
+    <a class="btn btn-primary" routerLink="">Torna alla Home</a>
+  </ng-template>
+</div>

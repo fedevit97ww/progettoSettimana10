@@ -1,0 +1,22 @@
+
+
+<div class="container mt-5 d-flex justify-content-center" *ngIf="dettagliProdotto; else loading">
+
+
+    <div class="card" style="width:450px">
+      <img src="{{dettagliProdotto.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{dettagliProdotto.name}}</h5>
+        <p class="card-text">{{dettagliProdotto.description}}</p>
+        <p class="card-text">{{dettagliProdotto.price}} €</p>
+        <a class="btn btn-success ms-3" (click)="aggiungi(dettagliProdotto)">Aggiungi</a>
+        <a class="btn btn-success ms-3" (click)="back()">Indietro</a>
+      </div>
+    </div>
+</div>
+
+
+<ng-template #loading>
+  <h3 class="d-inline">Caricamento...</h3>
+  <span class="spinner-border d-inline" role="status"></span>
+</ng-template>

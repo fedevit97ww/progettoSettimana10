@@ -1,0 +1,34 @@
+<div class="container mb-5 mt-5">
+  <h1>Prodotti</h1>
+  <div *ngIf="listaProdotti; else loading">
+      <div class="row">
+      <div
+        class="col-12 col-md-6 col-xl-3 mt-5"
+        *ngFor="let item of listaProdotti; let i = index"
+      >
+        <div class="card">
+          <img
+            src="{{item.url}}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text">{{ item.price }} €</p>
+            <a class="btn btn-primary" [routerLink]="['products/', item.id]"
+              >Dettagli</a
+            >
+            <a class="btn btn-success ms-3" (click)="aggiungi(item)"
+              >Aggiungi</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <h3 class="d-inline">Caricamento...</h3>
+    <span class="spinner-border d-inline" role="status"></span>
+  </ng-template>
+</div>
